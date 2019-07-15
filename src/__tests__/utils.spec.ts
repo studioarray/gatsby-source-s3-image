@@ -1,7 +1,7 @@
-import { FileSystemNode } from 'gatsby-source-filesystem'
-import * as Factory from 'factory.ts'
+import * as Factory from 'factory.ts';
+import { FileSystemNode } from 'gatsby-source-filesystem';
+import { constructS3UrlForAsset, getEntityNodeFields, isImage } from '../utils';
 
-import { constructS3UrlForAsset, getEntityNodeFields, isImage } from '../utils'
 
 const FileSystemNodeMock = Factory.Sync.makeFactory<FileSystemNode>({})
 
@@ -22,7 +22,7 @@ describe('utils', () => {
       key: 'my_image.jpg',
     })
     expect(s3Url).toBe(
-      'https://jesse.pics.s3.us-east-1.amazonaws.com/my_image.jpg'
+      'https://jesse.pics.s3-us-east-1.amazonaws.com/my_image.jpg'
     )
   })
 

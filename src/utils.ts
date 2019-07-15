@@ -1,12 +1,12 @@
-import { S3 } from 'aws-sdk'
-import _ from 'lodash'
-import fp from 'lodash/fp'
-import invariant from 'invariant'
-import mime from 'mime-types'
+import { S3 } from 'aws-sdk';
+import { FileSystemNode } from 'gatsby-source-filesystem';
+import invariant from 'invariant';
+import _ from 'lodash';
+import fp from 'lodash/fp';
+import mime from 'mime-types';
+import EntityNode from './types/EntityNode';
 
-import { FileSystemNode } from 'gatsby-source-filesystem'
 
-import EntityNode from './types/EntityNode'
 
 // =========================
 // Plugin-specific constants.
@@ -96,7 +96,7 @@ export const constructS3UrlForAsset = ({
   // protocol (e.g., Minio, Digital Ocean Spaces, OpenStack Swift, etc).
   const isAWS: boolean = _.includes(domain, 'amazonaws.com')
   const url = isAWS
-    ? `${protocol}://${bucketName}.s3.${region}.amazonaws.com/${key}`
+    ? `${protocol}://${bucketName}.s3-${region}.amazonaws.com/${key}`
     : `${protocol}://${domain}/${bucketName}/${key}`
   return url
 }
